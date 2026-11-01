@@ -1,6 +1,8 @@
 <?php
 require 'koneksi.php';
 require 'master.php';
+require 'auth.php';
+wajib_role('admin');
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -10,6 +12,7 @@ require 'master.php';
 </head>
 <body>
 <h2>Sistem Inventori - Toko Hani</h2>
+<p>Login sebagai <b><?= htmlspecialchars($_SESSION['username']) ?></b> | <a href="admin.php">Dashboard Admin</a> | <a href="logout.php">Logout</a></p>
 
 <h3>Data Master (CRUD)</h3>
 <ul>

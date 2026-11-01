@@ -1,6 +1,7 @@
 <?php
 require 'koneksi.php';
-
+require 'auth.php';
+wajib_role('admin');
 $v = $_GET['v'] ?? '';
 if (!is_string($v) || !isset($daftar_view[$v])) {
     die('View tidak ditemukan. <a href="index.php">Kembali</a>');

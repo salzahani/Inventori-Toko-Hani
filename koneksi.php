@@ -1,9 +1,9 @@
 <?php
 $pdo = new PDO('mysql:host=127.0.0.1;dbname=db_inventori;charset=utf8mb4', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 $daftar_view = [
-    'v_barang_aktif' => 'Barang Aktif',
     'v_vendor_aktif' => 'Vendor Aktif',
     'v_margin_aktif' => 'Margin Aktif',
     'v_user' => 'Pengguna',
