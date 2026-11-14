@@ -21,17 +21,20 @@ $stokList = $pdo->query("SELECT * FROM v_stok_terkini")->fetchAll();
 <html lang="id">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Halaman Admin - Toko Hani</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="wrap">
 <h2>Admin Control Panel - Toko Hani</h2>
-<p>Selamat datang, <b><?= htmlspecialchars($_SESSION['username']) ?></b> |
+<p class="nav">Selamat datang, <b><?= htmlspecialchars($_SESSION['username']) ?></b> |
 <a href="pengadaan.php">Pengadaan</a> |
 <a href="index.php">Data Master (CRUD)</a> |
 <a href="logout.php">Logout</a></p>
 
 <?php if ($pesan) { ?>
-    <p><b><?= htmlspecialchars($pesan) ?></b></p>
+    <p class="pesan"><?= htmlspecialchars($pesan) ?></p>
 <?php } ?>
 
 <h3>Tambah Master Barang</h3>
@@ -56,7 +59,7 @@ $stokList = $pdo->query("SELECT * FROM v_stok_terkini")->fetchAll();
 </form>
 
 <h3>Stok Barang Terkini</h3>
-<table border="1" cellpadding="5" cellspacing="0">
+<table class="tabel">
     <tr>
         <th>ID Barang</th>
         <th>Nama Barang</th>
@@ -75,5 +78,6 @@ $stokList = $pdo->query("SELECT * FROM v_stok_terkini")->fetchAll();
         <tr><td colspan="4">Belum ada data.</td></tr>
     <?php } ?>
 </table>
+</div>
 </body>
 </html>

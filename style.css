@@ -1,0 +1,74 @@
+/* style.css - tampilan tema kuning Toko Hani (dipakai bersama oleh semua halaman) */
+body {
+    margin: 0;
+    background: #fffbeb;          /* krem lembut */
+    color: #3b2f0b;               /* cokelat tua supaya mudah dibaca */
+    font-family: system-ui, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+/* Kotak isi halaman di tengah */
+.wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+/* Judul halaman = bar kuning */
+h2 {
+    background: #f59e0b;
+    color: #3b2f0b;
+    margin: 0 0 12px;
+    padding: 14px 18px;
+    border-radius: 10px;
+}
+h3 {
+    margin: 22px 0 8px;
+    padding-left: 10px;
+    border-left: 5px solid #f59e0b;
+}
+
+a { color: #b45309; }
+.nav { margin: 0 0 12px; }
+
+/* Pesan sukses / gagal */
+.pesan {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-weight: bold;
+}
+
+/* Form */
+select, input {
+    padding: 6px 8px;
+    border: 1px solid #e0c36a;
+    border-radius: 6px;
+    background: #fff;
+}
+button {
+    padding: 7px 16px;
+    border: 0;
+    border-radius: 6px;
+    background: #f59e0b;
+    color: #3b2f0b;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:hover { background: #d97706; color: #fff; }
+
+/* Tabel */
+.tabel {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-bottom: 12px;
+}
+.tabel th, .tabel td {
+    border: 1px solid #f3dc9a;
+    padding: 8px 10px;
+    text-align: left;
+}
+.tabel th { background: #fde68a; }
+.tabel tr:nth-child(even) td { background: #fffdf5; }

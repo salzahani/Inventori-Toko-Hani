@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $vendor  = $pdo->query('SELECT idvendor, nama_vendor FROM v_vendor_aktif')->fetchAll();
-$barang  = $pdo->query("SELECT idbarang, nama_barang, harga FROM v_barang_lengkap WHERE status = 'Aktif'COLLATE utf8mb4_general_ci")->fetchAll();
+$barang  = $pdo->query("SELECT idbarang, nama_barang, harga FROM v_barang_lengkap WHERE status = 'Aktif' COLLATE utf8mb4_general_ci")->fetchAll();
 $nama    = array_column($barang, 'nama_barang', 'idbarang');
 $riwayat = $pdo->query('SELECT * FROM v_pengadaan_detail ORDER BY idpengadaan DESC LIMIT 30')->fetchAll();
 
@@ -51,11 +51,21 @@ if (isset($_SESSION['pesan'])) {
     unset($_SESSION['pesan']);
 }
 ?>
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pengadaan - Toko Hani</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
 <h2>Pengadaan</h2>
-<p><a href="admin.php">&laquo; Dashboard</a> | <a href="logout.php">Logout</a></p>
-
+<p class="nav"><a href="admin.php">&laquo; Dashboard</a> | <a href="logout.php">Logout</a></p>
 <?php if ($pesan !== '') { ?>
-    <p><b><?= htmlspecialchars($pesan) ?></b></p>
+    <p class="pesan"><?= htmlspecialchars($pesan) ?></p>
 <?php } ?>
 
 <h3>Tambah barang</h3>
@@ -76,7 +86,7 @@ if (isset($_SESSION['pesan'])) {
 <?php if (!$_SESSION['keranjang']) { ?>
     <p>Belum ada barang.</p>
 <?php } else { ?>
-    <table border="1" cellpadding="5" cellspacing="0">
+    <table class="tabel">
         <tr><th>Barang</th><th>Harga beli</th><th>Jumlah</th><th>Subtotal</th><th></th></tr>
         <?php $total = 0; ?>
         <?php foreach ($_SESSION['keranjang'] as $id => $item) { ?>
@@ -112,7 +122,7 @@ if (isset($_SESSION['pesan'])) {
 <?php } ?>
 
 <h3>Riwayat pengadaan</h3>
-<table border="1" cellpadding="5" cellspacing="0">
+<table class="tabel">
     <tr><th>No</th><th>Vendor</th><th>Status</th><th>Barang</th><th>Jumlah</th><th>Harga</th><th>Total (+PPN)</th></tr>
     <?php foreach ($riwayat as $r) { ?>
         <tr>
@@ -126,3 +136,6 @@ if (isset($_SESSION['pesan'])) {
         </tr>
     <?php } ?>
 </table>
+</div>
+</body>
+</html>

@@ -37,13 +37,16 @@ if (isset($_POST['login'])) {
 <html lang="id">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Login - Toko Hani</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="login">
 <h2>Login Sistem Inventori - Toko Hani</h2>
 
 <?php if ($error) { ?>
-    <p><b><?= htmlspecialchars($error) ?></b></p>
+    <p class="pesan"><?= htmlspecialchars($error) ?></p>
 <?php } ?>
 
 <form method="post">
@@ -55,5 +58,6 @@ if (isset($_POST['login'])) {
 
     <button type="submit" name="login">Login</button>
 </form>
+</div>
 </body>
 </html>
