@@ -49,14 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $idpengadaan = $pdo->lastInsertId();
                 
                 $cari_harga = $pdo->prepare('SELECT harga FROM barang WHERE idbarang = ? AND status_barang = 1');
-                $simpan = $pdo->prepare('INSERT INTO detail_pengadaan (harga_satuan, jumlah, sub_total, idbarang, idpengadaan) VALUES (?, ?, ?, ?, ?)');
+                $simpan = $pdo->prepare('INSERT INTO detail_pengadaan (harga_satuan, jumlah, sub_total, idbarang, idpengadaan) VALUES (?, ?, fn_hitung_subtotal(?, ?), ?, ?)');
                 foreach ($_SESSION['keranjang'] as $id => $jumlah) {
                     $cari_harga->execute([$id]);
                     $harga = $cari_harga->fetchColumn();
                     if ($harga === false || $harga < 1) {
                         throw new Exception('Ada barang yang tidak ditemukan atau tidak aktif.');
                     }
-                    $simpan->execute([$harga, $jumlah, $harga * $jumlah, $id, $idpengadaan]);
+                    $simpan->execute([$harga, $jumlah, $harga, $jumlah, $id, $idpengadaan]);
             }
             $pdo->commit();
                 $_SESSION['keranjang'] = [];
@@ -167,7 +167,7 @@ if (isset($_SESSION['pesan'])) {
 
 <h3>Riwayat pengadaan</h3>
 <table class="tabel">
-    <tr><th>ID</th><th>Tanggal</th><th>Vendor</th><th>Dibuat oleh</th><th>Subtotal</th><th>PPN</th><th>Total</th><th>Status</th><th>Aksi</th></tr>
+    <tr><th>ID Pengadaan</th><th>Tanggal</th><th>Vendor</th><th>Dibuat oleh</th><th>Subtotal</th><th>PPN</th><th>Total</th><th>Status</th><th>Aksi</th></tr>
     <?php foreach ($riwayat as $r) { ?>
         <tr>
             <td><?= $r['idpengadaan'] ?></td>

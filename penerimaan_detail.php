@@ -1,7 +1,7 @@
 <?php
 require 'koneksi.php';
 require 'auth.php';
-wajib_role('admin');
+wajib_role('kasir');
 
 function rp($angka){
     return 'Rp ' . number_format((float) $angka, 0, ',', '.');
@@ -36,7 +36,7 @@ foreach ($baris as $b) {
 <p class="nav"><a href="admin.php">&laquo; Dashboard</a> | <a href="pengadaan.php">Pengadaan</a> | <a href="logout.php">Logout</a></p>
 <p><a href="penerimaan.php">&laquo; Kembali ke daftar</a></p>
 
-<h3>Detail penerimaan - Pengadaan #<?= $id ?></h3>
+<h3>Detail penerimaan - Pengadaan <?= $id ?></h3>
 <?php if (!$baris) { ?>
     <p class="pesan">Belum ada penerimaan</p>
 <?php } else { ?>
@@ -44,7 +44,7 @@ foreach ($baris as $b) {
         <tr><th>ID penerimaan</th><th>Tanggal terima</th><th>Barang</th><th>Jumlah</th><th>Harga</th><th>Subtotal</th></tr>
         <?php foreach ($baris as $b) { ?>
         <tr>
-            <td>#<?= $b['idpenerimaan'] ?></td>
+            <td><?= $b['idpenerimaan'] ?></td>
                 <td><?= htmlspecialchars($b['tgl_terima']) ?></td>
                 <td><?= htmlspecialchars($b['nama_barang']) ?></td>
                 <td><?= (int) $b['jumlah_terima'] ?></td>

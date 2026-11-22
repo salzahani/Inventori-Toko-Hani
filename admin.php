@@ -30,6 +30,7 @@ $stokList = $pdo->query("SELECT * FROM v_stok_terkini")->fetchAll();
 <h2>Admin Control Panel - Toko Hani</h2>
 <p class="nav">Selamat datang, <b><?= htmlspecialchars($_SESSION['username']) ?></b> |
 <a href="pengadaan.php">Pengadaan</a> |
+<a href="penerimaan.php">Penerimaan</a> |
 <a href="index.php">Data Master (CRUD)</a> |
 <a href="logout.php">Logout</a></p>
 

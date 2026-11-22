@@ -108,7 +108,7 @@ if (isset($_SESSION['pesan'])) {
         <tr><th>ID Pengadaan</th><th>Tanggal</th><th>Vendor</th><th>Dibuat oleh</th><th>Status</th><th>Aksi</th></tr>
         <?php foreach ($daftar as $p) { ?>
         <tr>
-            <td>#<?= $p['idpengadaan'] ?></td>
+            <td><?= $p['idpengadaan'] ?></td>
                     <td><?= htmlspecialchars($p['tgl_pengadaan']) ?></td>
                     <td><?= htmlspecialchars($p['nama_vendor']) ?></td>
                     <td><?= htmlspecialchars($p['pemesan']) ?></td>
@@ -126,7 +126,7 @@ if (isset($_SESSION['pesan'])) {
         <tr><th>ID Pengadaan</th><th>Tanggal</th><th>Vendor</th><th>Dibuat oleh</th><th>Status</th><th>Aksi</th></tr>
         <?php foreach ($selesai as $p) { ?>
         <tr>
-            <td>#<?= $p['idpengadaan'] ?></td>
+            <td><?= $p['idpengadaan'] ?></td>
                 <td><?= htmlspecialchars($p['tgl_pengadaan']) ?></td>
                 <td><?= htmlspecialchars($p['nama_vendor']) ?></td>
                 <td><?= htmlspecialchars($p['pemesan']) ?></td>
@@ -145,7 +145,7 @@ if (isset($_SESSION['pesan'])) {
 
 <?php } else { ?>
 <p><a href="penerimaan.php">&laquo; Kembali ke daftar</a></p>
-    <h3>Pengadaan #<?= $id ?></h3>
+    <h3>Pengadaan<?= $id ?></h3>
     <form method="post">
         <input type="hidden" name="idpengadaan" value="<?= $id ?>">
         <table class="tabel">

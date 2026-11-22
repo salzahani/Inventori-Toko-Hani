@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
         $_SESSION['user_id'] = $user['iduser'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['nama_role'];
-        header("Location: " . ($user['nama_role'] === 'admin' ? 'admin.php' : 'kasir.php'));
+        header("Location: " . ($user['nama_role'] === 'admin' ? 'admin.php' : 'penjualan.php'));
         exit;
     } elseif ($cocok) {
         $error = "Akses role belum didukung!";
