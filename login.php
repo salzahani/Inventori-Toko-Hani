@@ -8,7 +8,7 @@ if (isset($_POST['login'])) {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    $stmt = $pdo->prepare("SELECT u.*, r.nama_role FROM user u JOIN role r ON u.idrole = r.idrole WHERE u.username = ?");
+    $stmt = $pdo->prepare("SELECT iduser, username, password_user, nama_role FROM v_login_user WHERE username =?");
     $stmt->execute([$username]);
     $user = $stmt->fetch();
 
@@ -42,7 +42,7 @@ if (isset($_POST['login'])) {
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="login">
+<div class="wrap">
 <h2>Login Sistem Inventori - Toko Hani</h2>
 
 <?php if ($error) { ?>

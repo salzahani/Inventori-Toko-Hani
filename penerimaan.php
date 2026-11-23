@@ -145,8 +145,8 @@ if (isset($_SESSION['pesan'])) {
 
 <?php } else { ?>
 <p><a href="penerimaan.php">&laquo; Kembali ke daftar</a></p>
-    <h3>Pengadaan<?= $id ?></h3>
-    <form method="post">
+    <h3>Pengadaan <?= $id ?></h3>
+    <form method="post" novalidate>
         <input type="hidden" name="idpengadaan" value="<?= $id ?>">
         <table class="tabel">
             <tr><th>Barang</th><th>Dipesan</th><th>Sudah diterima</th><th>Sisa</th><th>Terima sekarang</th></tr>

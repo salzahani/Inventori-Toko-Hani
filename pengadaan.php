@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute([$_SESSION['user_id'], $idvendor]);
                 $idpengadaan = $pdo->lastInsertId();
                 
-                $cari_harga = $pdo->prepare('SELECT harga FROM barang WHERE idbarang = ? AND status_barang = 1');
+                $cari_harga = $pdo->prepare("SELECT harga FROM v_barang_lengkap WHERE idbarang = ? AND status = 'Aktif' COLLATE utf8mb4_general_ci");
                 $simpan = $pdo->prepare('INSERT INTO detail_pengadaan (harga_satuan, jumlah, sub_total, idbarang, idpengadaan) VALUES (?, ?, fn_hitung_subtotal(?, ?), ?, ?)');
                 foreach ($_SESSION['keranjang'] as $id => $jumlah) {
                     $cari_harga->execute([$id]);
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             $pdo->commit();
                 $_SESSION['keranjang'] = [];
-                $_SESSION['pesan'] = "Pengadaan #$idpengadaan berhasil disimpan.";
+                $_SESSION['pesan'] = "Pengadaan $idpengadaan berhasil disimpan.";
             } catch (Exception $error) {
                 $pdo->rollBack();
                 $_SESSION['pesan'] = 'Gagal menyimpan: ' . $error->getMessage();
@@ -104,7 +104,7 @@ if (isset($_SESSION['pesan'])) {
 <?php } ?>
 
 <h3>Buat pengadaan baru</h3>
-<form method="post">
+<form method="post" novalidate>
     <input type="hidden" name="aksi" value="tambah">
     <select name="idbarang" required>
         <option value="">-- Pilih barang --</option>
@@ -152,7 +152,7 @@ if (isset($_SESSION['pesan'])) {
         <tr><th colspan="3">Total (belum PPN)</th><th><?= rp($total) ?></th><td></td></tr>
     </table>
 
-    <form method="post">
+    <form method="post" novalidate>
         <input type="hidden" name="aksi" value="simpan">
         Vendor
         <select name="idvendor" required>
@@ -166,6 +166,7 @@ if (isset($_SESSION['pesan'])) {
 <?php } ?>
 
 <h3>Riwayat pengadaan</h3>
+<div class="gulir">
 <table class="tabel">
     <tr><th>ID Pengadaan</th><th>Tanggal</th><th>Vendor</th><th>Dibuat oleh</th><th>Subtotal</th><th>PPN</th><th>Total</th><th>Status</th><th>Aksi</th></tr>
     <?php foreach ($riwayat as $r) { ?>

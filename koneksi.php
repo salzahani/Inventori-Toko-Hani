@@ -17,4 +17,5 @@ $daftar_view = [
     'v_penjualan_detail' => 'Detail Penjualan',
     'v_penjualan_harian' => 'Penjualan Harian',
     'v_stok_terkini' => 'Stok Terkini',
+    'v_kartu_stok' => 'Kartu Stok',
 ];

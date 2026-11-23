@@ -130,13 +130,16 @@ $judul = $m['judul'];
 <html lang="id">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= htmlspecialchars($judul) ?> - Toko Hani</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="wrap">
 <?php if ($aksi === 'tambah' || $aksi === 'ubah') { ?>
     <h2><?= $aksi === 'tambah' ? 'Tambah ' . htmlspecialchars($judul) . ' Baru' : 'Edit Data ' . htmlspecialchars($judul) ?></h2>
     <?php foreach ($galat as $g) { ?>
-        <p><b><?= htmlspecialchars($g) ?></b></p>
+        <p class="pesan"><b><?= htmlspecialchars($g) ?></b></p>
     <?php } ?>
     <form method="post" action="crud.php?t=<?= urlencode($t) ?>&aksi=<?= $aksi ?><?= $aksi === 'ubah' ? '&id=' . $id : '' ?>">
         <?php if ($aksi === 'ubah') { ?>
@@ -175,16 +178,18 @@ $judul = $m['judul'];
     $kode_pesan = is_string($_GET['pesan'] ?? null) ? $_GET['pesan'] : '';
     ?>
     <h2>Daftar <?= htmlspecialchars($judul) ?> - Toko Hani</h2>
-    <a href="index.php">&laquo; Menu</a> |
-    <a href="crud.php?t=<?= urlencode($t) ?>&aksi=tambah">+ Tambah Data Baru</a>
-    <br><br>
+    <p class="nav">
+        <a href="index.php">&laquo; Menu</a> |
+        <a href="crud.php?t=<?= urlencode($t) ?>&aksi=tambah">+ Tambah Data Baru</a>
+    </p>
     <?php if (isset($daftar_pesan[$kode_pesan])) { ?>
-        <p><b><?= $daftar_pesan[$kode_pesan] ?></b></p>
+        <p class="pesan"><b><?= $daftar_pesan[$kode_pesan] ?></b></p>
     <?php } ?>
     <?php foreach ($galat as $g) { ?>
-        <p><b><?= htmlspecialchars($g) ?></b></p>
+        <p class="pesan"><b><?= htmlspecialchars($g) ?></b></p>
     <?php } ?>
-    <table border="1" cellpadding="5" cellspacing="0">
+    <div class="gulir">
+    <table class="tabel">
         <tr>
             <?php foreach ($kolom as $k) { ?>
                 <th><?= htmlspecialchars(ucwords(str_replace('_', ' ', $k))) ?></th>
@@ -209,6 +214,8 @@ $judul = $m['judul'];
             <tr><td colspan="<?= count($kolom) + 1 ?>">Belum ada data.</td></tr>
         <?php } ?>
     </table>
+    </div>
 <?php } ?>
+</div>
 </body>
 </html>

@@ -11,7 +11,7 @@ if (isset($_POST['tambah_barang'])) {
         $stmt->execute([$_POST['jenis'], trim($_POST['nama']), (int) $_POST['idsatuan'], $_POST['harga']]);
         $pesan = "Barang berhasil disimpan!";
     } catch (PDOException $e) {
-        $pesan = "Gagal menyimpan: " . $e->getMessage();
+        $pesan = "Gagal menyimpan: ";
     }
 }
 
@@ -65,7 +65,7 @@ $stokList = $pdo->query("SELECT * FROM v_stok_terkini")->fetchAll();
         <th>ID Barang</th>
         <th>Nama Barang</th>
         <th>Satuan</th>
-        <th>Stok Available</th>
+        <th>Stok</th>
     </tr>
     <?php foreach ($stokList as $s) { ?>
         <tr>

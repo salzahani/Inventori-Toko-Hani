@@ -72,3 +72,19 @@ button:hover { background: #d97706; color: #fff; }
 }
 .tabel th { background: #fde68a; }
 .tabel tr:nth-child(even) td { background: #fffdf5; }
+
+/* Daftar link di halaman Data Master */
+.daftar {
+    background: #fff;
+    border: 1px solid #f3dc9a;
+    border-radius: 10px;
+    padding: 10px 10px 10px 32px;
+}
+.daftar li {
+    padding: 3px 0;
+}
+
+/* Tabel lebar */
+.gulir {
+    overflow-x: auto;
+}

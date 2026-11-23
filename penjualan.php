@@ -120,7 +120,7 @@ if (isset($_SESSION['pesan'])) {
 <?php } ?>
 
 <h3>Buat penjualan baru</h3>
-<form method="post">
+<form method="post" novalidate>
     <input type="hidden" name="aksi" value="tambah">
     <select name="idbarang" required>
         <option value="">-- Pilih barang --</option>
@@ -174,7 +174,7 @@ if (isset($_SESSION['pesan'])) {
         <tr><th colspan="3">PPN</th><th><?= rp($ppn) ?></th><td></td></tr>
         <tr><th colspan="3">Total bayar</th><th><?= rp($subtotal + $ppn) ?></th><td></td></tr>
     </table>
-    <form method="post">
+    <form method="post" novalidate>
         <input type="hidden" name="aksi" value="simpan">
         <button>Simpan Penjualan</button>
     </form>

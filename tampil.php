@@ -23,13 +23,16 @@ for ($i = 0; $i < $stmt->columnCount(); $i++) {
 <html lang="id">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= $daftar_view[$v] ?> - Toko Hani</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="wrap">
 <h2><?= $daftar_view[$v] ?> - Toko Hani</h2>
-<a href="index.php">&laquo; Kembali ke daftar view</a>
-<br><br>
-<table border="1" cellpadding="5" cellspacing="0">
+<p class="nav"><a href="index.php">&laquo; Kembali ke daftar view</a></p>
+<div class="gulir">
+<table  class="tabel">
     <tr>
         <?php foreach ($kolom as $k) { ?>
             <th><?= htmlspecialchars($k) ?></th>
@@ -43,8 +46,10 @@ for ($i = 0; $i < $stmt->columnCount(); $i++) {
         </tr>
     <?php } ?>
     <?php if (!$baris) { ?>
-        <tr><td colspan="<?= count($kolom) ?>">Belum ada data.</td></tr>
+        <tr><td colspan="<?= count($kolom) ?>">Belum ada data</td></tr>
     <?php } ?>
 </table>
+</div>
+</div>
 </body>
 </html>
